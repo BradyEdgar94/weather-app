@@ -17,10 +17,13 @@ export default {
         },
         '&:hover': {
             '&:before': {
-                width: '100%'
+                width: '0.75rem'
             },
             '& button': {
-                color: '#fff'
+                paddingLeft: '6rem'
+            },
+            '& img': {
+                left: '2rem'
             }
         },
         '& p': {
@@ -45,7 +48,7 @@ export default {
             border: 'none',
             outline: 'none',
             cursor: 'pointer',
-            transition: 'color 0.3s ease-in-out',
+            transition: 'color 0.3s ease-in-out, padding-left 0.3s ease-in-out',
         }
     },
     icon: {
@@ -56,13 +59,18 @@ export default {
         marginTop: '-1.5rem',
         marginRight: '1rem',
         width: '3rem',
-        height: '3rem'
+        height: '3rem',
+        transition: 'left 0.3s ease-in-out',
     },
     active: {
         borderBottom: 'none',
         '& button': {
-            background: '#5783c1',
-            color: '#fff'
+            background: '#8fadd6',
+            color: '#fff',
+            paddingLeft: '5rem !important'
+        },
+        '& img': {
+            left: '1rem !important'
         }
     }
 }

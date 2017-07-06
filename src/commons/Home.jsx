@@ -63,6 +63,22 @@ const styles = {
         height: '100%',
         backgroundColor: 'rgba(0,0,0,0.4)'
     },
+    iconBG: {
+        width: '7rem',
+        height: '7rem',
+        display: 'block',
+        borderRadius: '6rem',
+        margin: 'auto',
+        marginBottom: '1rem',
+        backgroundColor: '#fff'
+    },
+    icon: {
+        display: 'block',
+        width: '3rem',
+        margin: 'auto',
+        padding: '2rem',
+        position: 'relative'
+    },
     dynamicContent: {
         position: 'absolute',
         left: 0,
@@ -112,6 +128,10 @@ const Home = enhance(({ weatherData, classes, display, updateDisplay, initiateWe
                 {
                     display.capital
                         ?   <div className={classes.dynamicContent}>
+                                {weatherData[display.capital].weatherData &&
+                                    <span className={classes.iconBG}>
+                                        <img src={`../../../../images/icons/${weatherData[display.capital].weatherData.weather[0].icon}.png`} alt="" className={classes.icon} />
+                                    </span>}
                                 <h1>{display.capital}, {display.country} <span>{display.date}</span></h1>
                                 <ul>
                                     {display.stats.map(item => <li>{item.label && <span><strong>{item.label}</strong>: </span>}{item.value}</li>)}
@@ -122,7 +142,7 @@ const Home = enhance(({ weatherData, classes, display, updateDisplay, initiateWe
             </div>
             <div className={classes.leftSide}>
                 <ul>
-                    {Object.keys(weatherData).map(item => <ListItem active={slug(display.capital) == slug(weatherData[item].capital)} item={weatherData[item]} clickAction={updateDisplay} />)}
+                    {Object.keys(weatherData).map(item => <ListItem key={`${weatherData[item].capital}-list-item`} active={slug(display.capital) == slug(weatherData[item].capital)} item={weatherData[item]} clickAction={updateDisplay} />)}
                 </ul>
             </div>
         </section>
