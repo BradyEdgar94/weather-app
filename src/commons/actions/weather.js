@@ -64,7 +64,7 @@ export const initiateWeatherFetching = () => dispatch => {
                     return;
                 }
 
-                result[slug(capital)][formatText(key)] = formatText(line.split(",")[i])
+                result[slug(capital)][formatText(key)] = slug(formatText(line.split(",")[i]))
             });
         });
 

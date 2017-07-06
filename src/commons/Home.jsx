@@ -131,12 +131,18 @@ const styles = {
 const Home = enhance(({ weatherData, classes, display, updateDisplay, initiateWeatherFetching }) => (
     <div>
         <section className={classes.container}>
-            <div className={classes.rightSide}>
+            <div
+                className={classes.rightSide}
+                style={{backgroundImage: weatherData[display.capital] && weatherData[display.capital].weatherData
+                    ?   `url(../../../../images/backgrounds/${weatherData[display.capital].weatherData.weather[0].icon}.jpg)`
+                    :   'url(/images/cloudy.jpg)'
+                }}
+            >
                 <span className={classes.overlay}></span>
                 {
                     display.capital
                         ?   <div className={classes.dynamicContent}>
-                                {weatherData[display.capital].weatherData &&
+                                {weatherData[display.capital] && weatherData[display.capital].weatherData &&
                                     <span className={classes.iconBG}>
                                         <img src={`../../../../images/icons/${weatherData[display.capital].weatherData.weather[0].icon}.png`} alt="" className={classes.icon} />
                                     </span>}
