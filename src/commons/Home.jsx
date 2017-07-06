@@ -128,7 +128,7 @@ const styles = {
     }
 }
 
-const Home = enhance(({ weatherData, classes, display, updateDisplay, initiateWeatherFetching }) => (
+const Home = enhance(({ weatherData, classes, display, updateDisplay, initiateWeatherFetching, deleteLocation }) => (
     <div>
         <section className={classes.container}>
             <div
@@ -156,7 +156,7 @@ const Home = enhance(({ weatherData, classes, display, updateDisplay, initiateWe
             </div>
             <div className={classes.leftSide}>
                 <ul>
-                    {Object.keys(weatherData).map(item => <ListItem key={`${weatherData[item].capital}-list-item`} active={slug(display.capital) == slug(weatherData[item].capital)} item={weatherData[item]} clickAction={updateDisplay} />)}
+                    {Object.keys(weatherData).map(item => <ListItem key={`${weatherData[item].capital}-list-item`} active={display.capital == weatherData[item].capital} item={weatherData[item]} clickAction={updateDisplay} deleteAction={deleteLocation} />)}
                 </ul>
             </div>
         </section>

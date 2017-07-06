@@ -2,7 +2,7 @@ import React from 'react';
 import injectSheet from 'react-jss';
 import styles from './style';
 
-const ListItem = ({ classes, item = {}, clickAction, active }) => (
+const ListItem = ({ classes, item = {}, clickAction, active, deleteAction }) => (
     <li className={`${classes.container} ${active && classes.active}`}>
         <button onClick={() => clickAction(item)}>
             {item.weatherData && <img src={`../../../../images/icons/${item.weatherData.weather[0].icon}.png`} alt="" className={classes.icon} />}
@@ -18,6 +18,7 @@ const ListItem = ({ classes, item = {}, clickAction, active }) => (
                     {item.weatherData && item.weatherData.wind.speed} mps
                 </span>
             </p>
+            <a className={classes.delete} href="javascript:void(0)" onClick={() => deleteAction(item.capital)}><img src={`../../../../images/icons/delete.png`} /></a>
         </button>
     </li>
 );

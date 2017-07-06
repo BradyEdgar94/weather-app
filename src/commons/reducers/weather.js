@@ -1,6 +1,7 @@
 import {
     UPDATE_LOCATION,
-    STORE_LOCATIONS
+    STORE_LOCATIONS,
+    REMOVE_LOCATION
 } from '../actions/weather';
 import {
     UPDATE_TIME
@@ -38,6 +39,9 @@ export default (state = initialState, action) => {
                 ...state,
                 time: action.value
             }
+        case REMOVE_LOCATION:
+        delete state.data[action.value];
+        return state
 
         default:
         return state

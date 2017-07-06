@@ -3,7 +3,9 @@ import { push } from 'react-router-redux'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {
-  initiateWeatherFetching
+  initiateWeatherFetching,
+  fetchLocationWeather,
+  removeLocation
 } from '../actions/weather'
 import {
   updateDisplay
@@ -20,8 +22,11 @@ const mapDispatchToProps = (dispatch) => ({
         dispatch(initiateWeatherFetching());
     },
     updateDisplay (val) {
-        dispatch(initiateWeatherFetching());
+        dispatch(fetchLocationWeather(val.capital));
         dispatch(updateDisplay(val));
+    },
+    deleteLocation (location) {
+        dispatch(removeLocation(location));
     }
 })
 

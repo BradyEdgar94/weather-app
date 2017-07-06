@@ -5,12 +5,15 @@ var jsonfile = require('jsonfile');
 export const UPDATE_LOCATION = 'weather/UPDATE_LOCATION';
 export const STORE_LOCATIONS = 'weather/STORE_LOCATIONS';
 export const UPDATE_DISPLAY = 'weather/UPDATE_DISPLAY';
+export const REMOVE_LOCATION = 'weather/REMOVE_LOCATION';
 
 export const fetchLocationWeather = (locations) => dispatch => {
     function fetchData (location) {
         if (!location) {
             return;
         }
+
+        console.log('location', location);
 
         axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=1a8f4ae81a46e6c96cc8cf7d0d2c2473`)
             .then((response) => {
@@ -23,9 +26,13 @@ export const fetchLocationWeather = (locations) => dispatch => {
 
     addWeatherDataToLocation(locations);
     function addWeatherDataToLocation (locations) {
-        Object.keys(locations).forEach(location => {
-            fetchData(location);
-        });
+        if (locations instanceof Object) {
+            Object.keys(locations).forEach(location => {
+                fetchData(location);
+            });
+        } else {
+            fetchData(locations);
+        }
     }
 }
 
@@ -85,5 +92,12 @@ export const updateDisplay = (data) => dispatch => {
             date: '',
             stats: []
         }
+    })
+}
+
+export const removeLocation = (value) => dispatch => {
+    dispatch({
+        type: REMOVE_LOCATION,
+        value
     })
 }

@@ -51,6 +51,22 @@ export default {
             transition: 'color 0.3s ease-in-out, padding-left 0.3s ease-in-out',
         }
     },
+    delete: {
+        display: 'block',
+        position: 'absolute',
+        right: '1rem',
+        top: '50%',
+        marginTop: '-0.75rem',
+        width: '1.5rem',
+        height: '1.5rem',
+        transition: 'transform 0.3s ease-in-out',
+        '& img': {
+            width: '100%'
+        },
+        '&:hover': {
+            transform: 'rotate(90deg)'
+        }
+    },
     icon: {
         display: 'block',
         position: 'absolute',
