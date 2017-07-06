@@ -43,16 +43,24 @@ const styles = {
     },
     selectMessage: {
         position: 'absolute',
-        left: 0,
-        width: '100%',
+        left: '10%',
+        width: '80%',
         top: '50%',
         padding: '1rem 0rem',
-        fontSize: '1.35rem',
+        fontSize: '1rem',
         textAlign: 'center',
         color: '#fff',
-        fontWeight: 600,
-        '@media (min-width: 960px)': {
-            fontSize: '2rem'
+        lineHeight: '1.15',
+        transform: 'translateY(-50%)',
+        fontWeight: 100,
+        '& span': {
+            fontWeight: 700,
+            display: 'block',
+            fontSize: '1rem',
+            marginBottom: '1rem',
+            '@media (min-width: 960px)': {
+                fontSize: '2rem'
+            }
         }
     },
     overlay: {
@@ -137,7 +145,7 @@ const Home = enhance(({ weatherData, classes, display, updateDisplay, initiateWe
                                     {display.stats.map(item => <li>{item.label && <span><strong>{item.label}</strong>: </span>}{item.value}</li>)}
                                 </ul>
                             </div>
-                        :   <p className={classes.selectMessage}>Please select a location</p>
+                        :   <p className={classes.selectMessage}><span>Check out some weather from all around the world.</span> Start by selecting your favourite capital.</p>
                 }
             </div>
             <div className={classes.leftSide}>
